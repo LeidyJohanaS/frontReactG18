@@ -1,6 +1,5 @@
-import Navbar from './ciclo4/components/shared/Navbar';
-import Perfil from '../shared/Perfil';
-const CoorZona = () => (
+const CoorZona = () => {
+	return( 
     <>
 <div class="container">
 		<div class="row">
@@ -60,5 +59,6 @@ const CoorZona = () => (
 		</div>
 	</div>
     </>
-    )
+	);
+	}
     export default CoorZona
