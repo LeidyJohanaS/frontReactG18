@@ -1,14 +1,13 @@
 import './App.css';
 import Navbar from './ciclo4/components/shared/Navbar';
-import Index from './ciclo4/components/pages/Index';
+import Rutas from `./Rutas`;
 
 function App() {
   return (
-      <header>
-        <Navbar/>
-        <Index/>
-      </header>
-  
+    <div className="md:flex min-h-screen" >
+      < Navbar/>
+     <Rutas/>
+  </div>
   );
 }
 
