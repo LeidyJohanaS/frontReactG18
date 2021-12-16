@@ -4,24 +4,24 @@ const Index = () => (
     <>
        <div id="login">
         </div>
-        <div class="sidenav">
-            <div class="login-main-text">
+        <div className="sidenav">
+            <div className="login-main-text">
             </div>
         </div>
-        <div class="main">
-            <div class="col-md-6 col-sm-12">
-                <div class="login-form">
+        <div className="main">
+            <div className="col-md-6 col-sm-12">
+                <div className="login-form">
                     <form>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label>E-mail</label>
-                            <input type="email" class="form-control" id="useremail" placeholder="E-mail" required maxlength="50"/> 
-                            <span id="badEmail" class="badEmail"></span>
+                            <input type="email" className="form-control" id="useremail" placeholder="E-mail" required maxLength="50"/> 
+                            <span id="badEmail" className="badEmail"></span>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label>Contraseña</label>
-                            <input type="password" class="form-control" id="password" placeholder="Contraseña" required maxlength="50"/>
+                            <input type="password" className="form-control" id="password" placeholder="Contraseña" required maxLength="50"/>
                         </div>
-                        <button type="button" name="submit" class="btn btn-black btn-md" onclick="login()">Ingresar</button>
+                        <button type="button" name="submit" className="btn btn-black btn-md">Ingresar</button>
                     </form>
                 </div>
             </div>

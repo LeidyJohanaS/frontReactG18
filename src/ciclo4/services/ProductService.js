@@ -1,39 +1,38 @@
 import http from './http-config';
-var module="chocolate"
 
 const getAll = ()=> {
-  return http.get("/"+module+"/all");
+  return http.get("/chocolate/all");
 }
 
 const get = (reference)=> {
-  return http.get(`/${module}/${reference}`);
+  return http.get(`/chocolate/${reference}`);
 }
 
 const create = (data)=> {
-  return http.post(`/${module}/new`, data);
+  return http.post(`/chocolate/new`, data);
 }
 
 const update = (data) =>{
-  return http.put(`/${module}/update`, data);
+  return http.put(`/chocolate/update`, data);
 }
 
 const remove = (reference)=> {
-  return http.delete(`/${module}/${reference}`);
+  return http.delete(`/chocolate/${reference}`);
 }
 
 const findByPrice = (price) => {
-  return http.get(`/${module}?precio=${price}`);
+  return http.get(`/chocolate?precio=${price}`);
 }
 
 const findByCategory = (category) => {
-    return http.get(`/${module}?categoria=${category}`);
+    return http.get(`/chocolate?categoria=${category}`);
 }
 
 const findByName = (name) => {
-    return http.get(`/${module}?nombre=${name}`);
+    return http.get(`/chocolate?nombre=${name}`);
 }
 const getAllCategories = ()=>{
-  return http.get(`/${module}/categorias`);
+  return http.get(`/chocolate/categorias`);
 }
 const exportedObject = {
   getAll,

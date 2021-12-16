@@ -1,13 +1,13 @@
 const Perfil = () => (
     <>
-    <section class="row text-center p-5 my-container ">
-        <div class="card " style={{maxWidth:"70%"}}>
-            <div class="row g-0">
-                <div class="col-md-12 col align-self-center" >
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Perfil</h5>
-                        <div class="overflow-auto" id="resultadoTabla" >
-                            <p class="card-text text-center"><small class="text-muted"></small></p>
+    <section className="row text-center p-5 my-container ">
+        <div className="card " style={{maxWidth:"70%"}}>
+            <div className="row g-0">
+                <div className="col-md-12 col align-self-center" >
+                    <div className="card-body">
+                        <h5 className="card-title text-center">Perfil</h5>
+                        <div className="overflow-auto" id="resultadoTabla" >
+                            <p className="card-text text-center"><small className="text-muted"></small></p>
                         </div>
                     </div>
                 </div>
