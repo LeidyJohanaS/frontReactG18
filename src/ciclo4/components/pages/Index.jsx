@@ -1,5 +1,5 @@
 import "../../styles/Style.css"
-
+import NavIndex from "../shared/NavIndex"
 const Index = () => (
     <>
        <div id="login">

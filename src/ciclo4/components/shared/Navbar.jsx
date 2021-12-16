@@ -1,5 +1,6 @@
 import logo from '../../styles/img/logo1.jpeg';
 import logo1 from '../../styles/img/logo.jpeg';
+import Perfil from './Perfil';
 const Navbar = () => (
     <>
         <nav className="navbar navbar-dark fixed-top" style={{backgroundColor: '#863c59'}}>
