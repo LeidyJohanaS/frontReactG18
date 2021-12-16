@@ -22,22 +22,22 @@ window.onload=(function () {
   }
 const OrdenPedido = () => (
     <>
-<div class="container-fluid">
-        <div class="row">
+<div className="container-fluid">
+        <div className="row">
             <h1>Crear Pedidos</h1>
-            <div class="col-sm-5">
+            <div className="col-sm-5">
                 <h2>Información del pedido</h2>
                 <form>
-                    <div class="mb-3">
-                        <label for="registerDay" class="form-label">Fecha</label>
-                        <input type="date" name="registerDay" class="form-control" id="registerDay" disabled/>
+                    <div className="mb-3">
+                        <label for="registerDay" className="form-label">Fecha</label>
+                        <input type="date" name="registerDay" className="form-control" id="registerDay" disabled/>
                     </div>
-                    <div class="mb-3">
-                        <button id="crearOrden" class="btn btn-primary">Crear orden</button>
+                    <div className="mb-3">
+                        <button id="crearOrden" className="btn btn-primary">Crear orden</button>
                     </div>
                 </form>
                 <h2>Productos en la orden</h2>
-                <table id="tablaProductosEnOrden" class="table table-bordered border-dark">
+                <table id="tablaProductosEnOrden" className="table table-bordered border-dark">
                     <thead>
                         <th>Referencia</th>
                         <th>Precio unitario</th>
@@ -49,15 +49,15 @@ const OrdenPedido = () => (
                     </tbody>
                 </table>
             </div>
-            <div class="col-sm-7 h-50">
+            <div className="col-sm-7 h-50">
                 <h2>Lista de productos</h2>
-                <table id="tablaProductos" class="table table-bordered border-dark scroll-area">
+                <table id="tablaProductos" className="table table-bordered border-dark scroll-area">
 
                 </table>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
+        <div className="row">
+            <div className="col-md-6">
                
             </div>
 

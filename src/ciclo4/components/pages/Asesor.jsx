@@ -6,16 +6,12 @@ import "../../styles/buttons.css";
 //import $ from "jquery";
 import OrderTableAssessor from "../shared/OrderTableAssessor";
 import ChooseFilter from "../shared/ChooseFilter";
-import OrderSelectFilter from '../shared/OrderSelectFilter'
+//import OrderSelectFilter from "../shared/OrderSelectFilter";
+import OrderService from "../../services/OrderService"
 
 const Asesor = function () {
   const [orders, setOrders] = useState([]);
-  
-  
-  const[status,setStatus]=useState("none");
-  useEffect(() => {
-    console.log("estado=",status);
-  });
+  const [status, setStatus] = useState("none");
   return (
     <div className="container-fluid">
       <div className="row">
@@ -26,13 +22,23 @@ const Asesor = function () {
           <button className="btn btn-primary">Crear Pedido</button>
         </div>
       </div>
-      <div className="col-md-10">
-        <h2>Tus pedidos</h2>
-        <ChooseFilter setStatus={setStatus}></ChooseFilter>
-        <OrderSelectFilter></OrderSelectFilter>
+      <div className="row mb-3">
+        <div className="col-md-12">
+          <h2>Tus pedidos</h2>
+        </div>
+        <div className="col-md-6">
+          <ChooseFilter setStatus={setStatus}></ChooseFilter>
+        </div>
+        <div className="col-md-6">
+          {/* <OrderSelectFilter
+            filter={status}
+            setOrders={setOrders}
+          ></OrderSelectFilter> */}
+        </div>
       </div>
-      <div className="row">
-          <OrderTableAssessor orders={orders}/>
+
+      <div className="row mb-3">
+        <OrderTableAssessor theOrders={orders} />
       </div>
     </div>
   );
