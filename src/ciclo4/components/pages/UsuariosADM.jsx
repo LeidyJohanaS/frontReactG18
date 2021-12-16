@@ -1,5 +1,5 @@
-import Navbar from './ciclo4/components/shared/Navbar';
-import Perfil from '../shared/Perfil';
+//import Navbar from './ciclo4/components/shared/Navbar';
+//import Perfil from '../shared/Perfil';
 const UsuariosADM = () => (
     <>
     <div class="container">
@@ -53,7 +53,7 @@ const UsuariosADM = () => (
             <div class="col-md-6">
               <label for="email" class="p3">E-mail:</label><br />
               <input type="text" name="email" id="email" class="form-control" required maxlength="50" />
-              <span id="badEmail" class="badEmail" style="display:none"></span>
+              <span id="badEmail" class="badEmail" style={{"display":"none"}}></span>
             </div>
             <div class="col-md-6">
               <label for="password" class="p3">Clave:</label><br />
