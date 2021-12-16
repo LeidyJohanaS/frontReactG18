@@ -7,6 +7,7 @@ import "../../styles/buttons.css";
 import OrderTableAssessor from "../shared/OrderTableAssessor";
 import ChooseFilter from "../shared/ChooseFilter";
 import OrderSelectFilter from "../shared/OrderSelectFilter";
+import { Link } from "react-router-dom";
 
 
 const Asesor = function () {
@@ -19,7 +20,7 @@ const Asesor = function () {
           <h1>Asesor Comercial</h1>
         </div>
         <div className="col-md-2">
-          <button className="btn btn-primary">Crear Pedido</button>
+          <Link to="/OrdenPedido"><button className="btn btn-primary">Crear Pedido</button></Link>
         </div>
       </div>
       <div className="row mb-3">
