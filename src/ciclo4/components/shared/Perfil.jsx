@@ -1,19 +1,26 @@
-const Perfil = () => (
-    <>
-    <section className="row text-center p-5 my-container ">
-        <div className="card " style={{maxWidth:"70%"}}>
-            <div className="row g-0">
-                <div className="col-md-12 col align-self-center" >
-                    <div className="card-body">
-                        <h5 className="card-title text-center">Perfil</h5>
-                        <div className="overflow-auto" id="resultadoTabla" >
-                            <p className="card-text text-center"><small className="text-muted"></small></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    </>
-)
+
+const Perfil =()=>{
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    console.log(user);
+
+    const perfil = user.type ==='ASE' ? 'Asesor Comercial' : user.type === 'COORD' ? 'Coordinador de zona' : 'Administrador';
+
+    const tabla= ` <table class="table">
+    <tr><th>identification</th><th>name</th><th>email</th><th>zone</th><th>Perfil</th></tr>
+    <body>
+        <tr>
+            <td >${user.identification}</td>
+            <td>${user.name}</td>
+            <td>${user.email}</td>
+            <td>${user.zone}</td>
+            <td>${perfil}</td>
+        </tr>
+    </body>
+    
+    </table>`;
+
+    $("#resultadoTabla").html(tabla);
+
+}
+
 export default Perfil
