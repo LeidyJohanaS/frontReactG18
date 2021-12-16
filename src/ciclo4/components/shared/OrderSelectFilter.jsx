@@ -1,14 +1,15 @@
 import React from "react";
 import { Form } from "react-bootstrap";
-//import OrderService from "../../services/OrderService";
+//import $ from 'jquery'
+import OrderService from "../../services/OrderService";
 
-// function filtrarPorEstado(e) {
-//   console.log("Por estado", e);
-// }
+function filtrarPorEstado(e) {
+  console.log("Por estado", e);
+}
 
-// function filtrarPorFecha(e) {
-//   console.log("Por fecha", e);
-// }
+function filtrarPorFecha(e) {
+  console.log("Por fecha", e);
+}
 
 function aplicarFiltroEstado() {
   let estado = document.getElementById("status");
@@ -16,7 +17,20 @@ function aplicarFiltroEstado() {
   console.log(valor);
 }
 class OrderSelectFilter extends React.Component {
-
+  componentDidMount() {
+    const getOrders = () => {
+        OrderService.getAll()
+          .then((response) => {
+              
+            console.log("Respuesta", response);
+            this.props.setOrders(response.data);
+          })
+          .catch((err) => {
+            console.log("Error", err);
+          });
+      };
+      getOrders();
+  }
   render() {
     console.log("filter", this.props.filter);
     switch (this.props.filter) {
@@ -58,3 +72,31 @@ class OrderSelectFilter extends React.Component {
   }
 }
 export default OrderSelectFilter;
+
+function aplicarFiltro() {
+  switch (this.props.filter) {
+    case "none":
+    case "":
+      const getOrders = () => {
+        OrderService.getAll()
+          .then((response) => {
+            console.log("Respuesta", response);
+            this.props.setOrders(response);
+          })
+          .catch((err) => {
+            console.log("Error", err);
+          });
+      };
+      getOrders();
+      break;
+    case "date":
+      filtrarPorFecha();
+      break;
+    case "status":
+      filtrarPorEstado();
+      break;
+    default:
+      break;
+  }
+  //let value= $("#status")
+}

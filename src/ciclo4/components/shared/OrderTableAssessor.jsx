@@ -8,8 +8,8 @@ class OrderTableAssessor extends React.Component {
         <table className="table table-bordered border-dark scroll-area">
         <thead>
             <tr>
-            <th>Fecha del pedido</th>
             <th>#</th>
+            <th>Fecha del pedido</th>
             <th>Estado</th>
             <th>Acciones</th>
             </tr>
@@ -18,8 +18,8 @@ class OrderTableAssessor extends React.Component {
             {orders.length > 0 ? (
             orders.map((order, index) => (
                 <tr key={index}>
-                <td>{order.date}</td>
                 <td>{order.id}</td>
+                <td>{order.registerDay}</td>
                 <td>{order.status}</td>
                 <td>
                     <button className="btn btn-primary">Ver orden</button>

@@ -6,8 +6,8 @@ import "../../styles/buttons.css";
 //import $ from "jquery";
 import OrderTableAssessor from "../shared/OrderTableAssessor";
 import ChooseFilter from "../shared/ChooseFilter";
-//import OrderSelectFilter from "../shared/OrderSelectFilter";
-import OrderService from "../../services/OrderService"
+import OrderSelectFilter from "../shared/OrderSelectFilter";
+
 
 const Asesor = function () {
   const [orders, setOrders] = useState([]);
@@ -30,10 +30,10 @@ const Asesor = function () {
           <ChooseFilter setStatus={setStatus}></ChooseFilter>
         </div>
         <div className="col-md-6">
-          {/* <OrderSelectFilter
+          <OrderSelectFilter
             filter={status}
             setOrders={setOrders}
-          ></OrderSelectFilter> */}
+          ></OrderSelectFilter>
         </div>
       </div>
 

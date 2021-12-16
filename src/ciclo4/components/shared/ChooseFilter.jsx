@@ -16,7 +16,7 @@ function ChooseFilter({ setStatus }) {
         name="selectStatus"
         id="selectStatus"
       >
-        <option value="">Seleccione el filtro de búsqueda</option>
+        <option disabled>Seleccione el filtro de búsqueda</option>
         <option value="status">Por estado</option>
         <option value="date">Por fecha</option>
         <option value="none">Ninguno</option>
