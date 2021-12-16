@@ -1,5 +1,25 @@
-import Navbar from './ciclo4/components/shared/Navbar';
-import Perfil from '../shared/Perfil';
+//import Navbar from './ciclo4/components/shared/Navbar';
+//import Perfil from '../shared/Perfil';
+import $ from 'jquery'
+window.onload=(function () {
+    //cargarProductos();
+    cargarFechaDeHoy();
+  });
+
+  //var orden;
+  function cargarFechaDeHoy() {
+    let date = new Date();
+  
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+  
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+  
+    let today = year + "-" + month + "-" + day;
+    $("#registerDay").val(today);
+  }
 const OrdenPedido = () => (
     <>
 <div class="container-fluid">
