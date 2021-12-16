@@ -1,35 +1,35 @@
-import http from './http-config';
-var module="order"
-const getAll = ()=> {
-    return http.get("/"+module+"/all");
-  }
+import http from "./http-config";
+// var module = "order";
+const getAll = () => {
+  return http.get(`/order/all`);
+};
 
-  const get = (id)=> {
-    return http.get(`/${module}/${id}`);
-  }
+const get = (id) => {
+  return http.get(`/order/${id}`);
+};
 
-  const create = (data)=> {
-    return http.post(`/${order}/new`, data);
-  }
+const create = (data) => {
+  return http.post(`/order/new`, data);
+};
 
-  const update = (data) =>{
-    return http.put(`/${module}/update`, data);
-  }
+const update = (data) => {
+  return http.put(`/order/update`, data);
+};
 
-  const remove = (id)=> {
-    return http.delete(`/${module}/${id}`);
-  }
+const remove = (id) => {
+  return http.delete(`/order/${id}`);
+};
 
-  const findByZone = (zone) => {
-    return http.get(`/${module}/${zone}`);
-  }
-  
-  const exportedObject = {
-    getAll,
-    get,
-    create,
-    update,
-    remove,
-    findByZone
-  }
-  export default exportedObject;
+const findByZone = (zone) => {
+  return http.get(`/order/${zone}`);
+};
+
+const exportedObject = {
+  getAll,
+  get,
+  create,
+  update,
+  remove,
+  findByZone,
+};
+export default exportedObject;
