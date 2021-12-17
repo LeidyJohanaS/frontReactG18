@@ -1,7 +1,22 @@
-//import Navbar from './ciclo4/components/shared/Navbar';
+import Navbar from '../shared/Navbar';
 //import Perfil from '../shared/Perfil';
-const ProductosADM = () => (
-    <>
+const ProductosADM = () => {
+	let options = [
+		{
+			name: "Inicio",
+			url: "/Main"
+		},
+		{
+			name: "Productos",
+			url: "/ProductosADM"
+		},
+		{
+			name: "Usuarios",
+			url: "/UsuariosADM"
+		}
+	]
+		return<>
+		<Navbar menu = {options}></Navbar>
 <div className="container">
 		<div className="row">
 			<div className="col-md-10">
@@ -82,5 +97,5 @@ const ProductosADM = () => (
 		</div>
 	</div>
     </>
-    )
+}
 export default ProductosADM

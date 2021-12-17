@@ -5,22 +5,18 @@ const Perfil =()=>{
 
     const perfil = user.type ==='ASE' ? 'Asesor Comercial' : user.type === 'COORD' ? 'Coordinador de zona' : 'Administrador';
 
-    const tabla= ` <table class="table">
+    return(<table class="table">
     <tr><th>identification</th><th>name</th><th>email</th><th>zone</th><th>Perfil</th></tr>
     <body>
         <tr>
-            <td >${user.identification}</td>
-            <td>${user.name}</td>
-            <td>${user.email}</td>
-            <td>${user.zone}</td>
-            <td>${perfil}</td>
+            <td >{user.identification}</td>
+            <td>{user.name}</td>
+            <td>{user.email}</td>
+            <td>{user.zone}</td>
+            <td>{perfil}</td>
         </tr>
     </body>
     
-    </table>`;
-
-    $("#resultadoTabla").html(tabla);
-
+    </table>)
 }
-
 export default Perfil

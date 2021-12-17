@@ -2,6 +2,7 @@ import "../../styles/Style.css"
 import NavIndex from "../shared/NavIndex"
 const Index = () => (
     <>
+    <NavIndex />
        <div id="login">
         </div>
         <div className="sidenav">

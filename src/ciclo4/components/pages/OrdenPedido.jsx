@@ -1,4 +1,4 @@
-//import Navbar from './ciclo4/components/shared/Navbar';
+import Navbar from '../shared/Navbar';
 //import Perfil from '../shared/Perfil';
 import $ from "jquery";
 import { useEffect, useState } from "react";
@@ -49,7 +49,22 @@ const OrdenPedido = (props) => {
         }
         getProducts();
   },[])
-  return (
+  let options = [
+		{
+			name: "Inicio",
+			url: "/Index"
+		},
+		{
+			name: "Coordinador de Zona",
+			url: "/CoorZona"
+		},
+		{
+			name: "DetallesCoorZona",
+			url: "/DetallesCoorZona"
+		},
+	]
+  return (<>
+    <Navbar menu={options}></Navbar>
       <div className="container-fluid">
         <div className="row">
           <h1>Crear Pedidos</h1>
@@ -86,6 +101,7 @@ const OrdenPedido = (props) => {
           <div className="col-md-6"></div>
         </div>
       </div>
+  </>
   );
 };
 export default OrdenPedido;
