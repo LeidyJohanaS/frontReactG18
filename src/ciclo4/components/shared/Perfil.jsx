@@ -1,4 +1,4 @@
-
+import $ from 'jquery'
 const Perfil =()=>{
     const user = JSON.parse(sessionStorage.getItem("user"));
     console.log(user);
