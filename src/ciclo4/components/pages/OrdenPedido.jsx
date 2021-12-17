@@ -1,55 +1,155 @@
 //import Navbar from './ciclo4/components/shared/Navbar';
 //import Perfil from '../shared/Perfil';
-import $ from "jquery";
-import { useEffect, useState } from "react";
+import React from "react";
 import ProductService from "../../services/ProductService";
-import ProductsTable from "../shared/ProductsTable";
-import ProductsInOrderTable from "../shared/ProductsInOrderTable";
-window.onload = function () {
-  //cargarProductos();
-  cargarFechaDeHoy();
-};
+import OrderService from "../../services/OrderService";
 
-//var orden;
-function cargarFechaDeHoy() {
-  let date = new Date();
 
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  let year = date.getFullYear();
 
-  if (month < 10) month = "0" + month;
-  if (day < 10) day = "0" + day;
-
-  let today = year + "-" + month + "-" + day;
-  $("#registerDay").val(today);
-}
-const OrdenPedido = (props) => {
-  let initialOrderState = {
-    id: props.order ? props.order.id : "",
-    registerDay: props.order ? props.order.registerDay : "",
-    status: props.order ? props.order.status : "",
-    products: props.order ? props.order.products : {},
+class OrdenPedido extends React.Component {
+  getProducts() {
+    ProductService.getAll()
+      .then((response) => {
+        this.setState(function (state, props) {
+          return { products: response.data };
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  state = {
+    order: {
+      id: "",
+      registerDay: this.cargarFechaDeHoy(),
+      status: "Pendiente",
+      productsInOrder: {},
+      quantities: {},
+    },
+    products: [],
   };
-  if (props.order && props.order.id) {
-    initialOrderState["id"] = props.order.id;
+  componentDidMount() {
+    this.getProducts();
+  }
+  cargarFechaDeHoy() {
+    let date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+
+    let today = year + "-" + month + "-" + day;
+    return today;
   }
 
-  const [order, setOrder] = useState(initialOrderState);
-  const [products, setProducts] = useState([]);
-  const [productsInOrder, setProductsInOrder] = useState([]);
+  createUI() {
+     return <table
+     id="tablaProductosEnOrden"
+     className="table table-bordered border-dark"
+   >
+     <thead>
+       <tr>
+         <th>Referencia</th>
+         <th>Precio unitario</th>
+         <th>Cantidad</th>
+         <th>Eliminar</th>
+       </tr>
+     </thead>
+     <tbody id="bodyTablaProductosEnOrden">
+       {this.state.order.productsInOrder ? (
+         Object.keys(this.state.order.productsInOrder).map(
+           (key, index) => (
+             <tr key={key}>
+               <td>{this.state.order.productsInOrder[key].reference}</td>
+               <td>{this.state.order.productsInOrder[key].price}</td>
+               <td>
+                 <input
+                   type="number"
+                   value={
+                     this.state.order.quantities.hasOwnProperty(
+                      this.state.order.productsInOrder[key].reference
+                     )
+                       ? this.state.order.quantities[this.state.order.productsInOrder[key].reference]
+                       : (this.state.order.quantities[
+                        this.state.order.productsInOrder[key].reference
+                         ] = 1)
+                   }
+                   placeholder="Cantidad"
+                   onChange={this.handleChangeInput.bind(this, this.state.order.productsInOrder[key].reference)}
+                 />
+               </td>
+               <td>
+                 <button
+                   id={"remove-" + this.state.order.productsInOrder[key].reference}
+                   className="btn btn-secondary"
+                   onClick={
+                     this.removeClick.bind(this,this.state.order.productsInOrder[key].reference)
+                    }
+                 >
+                   Eliminar
+                 </button>
+               </td>
+             </tr>
+           )
+         )
+       ) : (
+         <tr>
+           <td colSpan={4}>
+             Aún no se han agregado productos a la orden
+           </td>
+         </tr>
+       )}
+       <tr></tr>
+     </tbody>
+   </table> 
+  }
 
-  useEffect(()=>{
-        function getProducts(){
-            ProductService.getAll().then((response)=>{
-                setProducts(response.data)
-            }).catch((err)=>{
-                console.log(err)
-            })
-        }
-        getProducts();
-  },[])
-  return (
+  handleChangeInput(reference, event) {
+    let quantities = this.state.order.quantities;
+    quantities[reference] = parseInt(event.target.value);
+    if(quantities[reference]<=0){
+      quantities[reference]=1;
+    }
+    let newOrder = this.state.order;
+    newOrder.quantities=quantities
+    this.setState({ order:newOrder });
+  }
+
+  addClick(product) {
+    let productsInOrder = this.state.order.productsInOrder;
+    productsInOrder[product.reference]=product;
+    let newOrder = this.state.order;
+    newOrder.productsInOrder=productsInOrder;
+    this.setState({ order:newOrder});
+  }
+
+  removeClick(reference) {
+    let productsInOrder= this.state.order.productsInOrder;
+    let quantities = this.state.order.quantities;
+    delete productsInOrder[reference];
+    delete quantities[reference];
+    let newOrder=this.state.order;
+    newOrder.productsInOrder=productsInOrder;
+    newOrder.quantities=quantities;
+    this.setState({ order:newOrder });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    OrderService.create(this.state.order).then((response)=>{
+      if(response.data.id){
+        alert("Orden creada satisfactoriamente");
+        window.location.href="/Asesor";
+      }
+    }).catch((err)=>{
+      alert("Error al crear orden",err)
+    })
+  }
+  render() {
+    return (
       <div className="container-fluid">
         <div className="row">
           <h1>Crear Pedidos</h1>
@@ -57,7 +157,7 @@ const OrdenPedido = (props) => {
             <h2>Información del pedido</h2>
             <form>
               <div className="mb-3">
-                <label for="registerDay" className="form-label">
+                <label htmlFor="registerDay" className="form-label">
                   Fecha
                 </label>
                 <input
@@ -66,26 +166,77 @@ const OrdenPedido = (props) => {
                   className="form-control"
                   id="registerDay"
                   disabled
+                  value={this.state.order.registerDay}
                 />
               </div>
               <div className="mb-3">
-                <button id="crearOrden" className="btn btn-primary">
+                <button id="crearOrden" className="btn btn-primary" onClick={(e)=>{this.handleSubmit(e)}}>
                   Crear orden
                 </button>
               </div>
             </form>
             <h2>Productos en la orden</h2>
-            <ProductsInOrderTable products={productsInOrder}></ProductsInOrderTable>
+            {this.createUI()}
           </div>
           <div className="col-sm-7 h-50">
             <h2>Lista de productos</h2>
-            <ProductsTable products={products}></ProductsTable>
+            <table
+              id="tablaProductos"
+              className="table table-bordered border-dark scroll-area"
+            >
+              <thead>
+                <tr>
+                  <th>Referencia</th>
+                  <th>Categoría</th>
+                  <th>Descripción</th>
+                  <th>Precio</th>
+                  <th>Imagen</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.products.length > 0 ? (
+                  this.state.products.map((product, index) => (
+                    <tr key={index}>
+                      <td>{product.reference}</td>
+                      <td>{product.category}</td>
+                      <td>{product.description}</td>
+                      <td>{product.price}</td>
+                      <td>
+                        <img
+                          src={product.photography}
+                          alt={product.reference}
+                          width={10}
+                          height={10}
+                        />
+                      </td>
+                      <td>
+                        <button
+                          id={"add-" + product.reference}
+                          className="btn btn-primary"
+                          onClick={
+                            this.addClick.bind(this,product)
+                          }
+                        >
+                          Agregar a la orden
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr key="0">
+                    <td colSpan={6}>No hay productos para mostrar.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
           </div>
         </div>
         <div className="row">
           <div className="col-md-6"></div>
         </div>
       </div>
-  );
-};
+    );
+  }
+}
 export default OrdenPedido;
