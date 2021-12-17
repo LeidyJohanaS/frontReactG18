@@ -1,6 +1,6 @@
 //import Navbar from './ciclo4/components/shared/Navbar';
 //import Perfil from "../shared/Perfil";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../../styles/buttons.css";
 //import { Table } from 'react-bootstrap';
 //import $ from "jquery";

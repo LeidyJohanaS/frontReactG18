@@ -17,9 +17,9 @@ function ChooseFilter({ setStatus }) {
         id="selectStatus"
       >
         <option disabled>Seleccione el filtro de búsqueda</option>
+        <option value="none">Ninguno</option>
         <option value="status">Por estado</option>
         <option value="date">Por fecha</option>
-        <option value="none">Ninguno</option>
       </Form.Select>
     </>
   );

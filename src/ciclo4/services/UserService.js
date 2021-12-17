@@ -1,30 +1,29 @@
 import http from "./http-config";
-var module = "user";
 const getAll = () => {
-  return http.get("/" + module + "/all");
+  return http.get("/user/all");
 };
 
 const get = (id) => {
-  return http.get(`/${module}/${id}`);
+  return http.get(`/user/${id}`);
 };
 
 const create = (data) => {
-  return http.post(`/${module}/new`, data);
+  return http.post(`/user/new`, data);
 };
 
 const update = (data) => {
-  return http.put(`/${module}/update`, data);
+  return http.put(`/user/update`, data);
 };
 
 const remove = (id) => {
-  return http.delete(`/${module}/${id}`);
+  return http.delete(`/user/${id}`);
 };
 const validateEmail =(email)=>{
-    return http.get(`/${module}/emailexist/${email}`)
+    return http.get(`/user/emailexist/${email}`)
 }
 
 const login = (email,password)=>{
-    return http.get(`/${module}/${email}/${password}`)
+    return http.get(`/user/${email}/${password}`)
 }
 const exportedObject = {
   getAll,
