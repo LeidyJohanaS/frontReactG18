@@ -29,11 +29,11 @@ const findBySalesman = (id)=>{
 }
 
 const findBySalesmanAndDate= (id,date)=>{
-  return http.get(`/api/order/date/${date}/${id}`);
+  return http.get(`/order/date/${date}/${id}`);
 }
 
 const findBySalesmanAndState=(id,state)=>{
-  return http.get(`/api/order/state/${state}/${id}`);
+  return http.get(`/order/state/${state}/${id}`);
 }
 const exportedObject = {
   getAll,
