@@ -24,6 +24,17 @@ const findByZone = (zone) => {
   return http.get(`/order/${zone}`);
 };
 
+const findBySalesman = (id)=>{
+  return http.get(`/order/salesman/${id}`);
+}
+
+const findBySalesmanAndDate= (id,date)=>{
+  return http.get(`/api/order/date/${date}/${id}`);
+}
+
+const findBySalesmanAndState=(id,state)=>{
+  return http.get(`/api/order/state/${state}/${id}`);
+}
 const exportedObject = {
   getAll,
   get,
@@ -31,5 +42,8 @@ const exportedObject = {
   update,
   remove,
   findByZone,
+  findBySalesman,
+  findBySalesmanAndDate,
+  findBySalesmanAndState
 };
 export default exportedObject;
