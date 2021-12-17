@@ -1,7 +1,6 @@
 import "../../styles/Style.css";
 import React from "react";
 import UserService from "../../services/UserService";
-import $ from 'jquery';
 import Functions from '../shared/Functions'
 class Index extends React.Component {
   state = {
