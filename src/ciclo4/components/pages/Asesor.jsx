@@ -10,10 +10,12 @@ import OrderSelectFilter from "../shared/OrderSelectFilter";
 import { Link } from "react-router-dom";
 
 
+
 const Asesor = function () {
   const [orders, setOrders] = useState([]);
   const [status, setStatus] = useState("none");
   return (
+    <>
     <div className="container-fluid">
       <div className="row">
         <div className="col-md-10">
@@ -42,6 +44,7 @@ const Asesor = function () {
         <OrderTableAssessor theOrders={orders} />
       </div>
     </div>
+    </>
   );
 };
 
