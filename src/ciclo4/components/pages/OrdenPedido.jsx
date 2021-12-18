@@ -23,8 +23,9 @@ class OrdenPedido extends React.Component {
       id: "",
       registerDay: this.cargarFechaDeHoy(),
       status: "Pendiente",
-      productsInOrder: {},
+      products: {},
       quantities: {},
+      salesMan: JSON.parse(sessionStorage.getItem("user"))
     },
     products: [],
   };
@@ -59,34 +60,32 @@ class OrdenPedido extends React.Component {
        </tr>
      </thead>
      <tbody id="bodyTablaProductosEnOrden">
-       {this.state.order.productsInOrder ? (
-         Object.keys(this.state.order.productsInOrder).map(
+       {this.state.order.products ? (
+         Object.keys(this.state.order.products).map(
            (key, index) => (
              <tr key={key}>
-               <td>{this.state.order.productsInOrder[key].reference}</td>
-               <td>{this.state.order.productsInOrder[key].price}</td>
+               <td>{this.state.order.products[key].reference}</td>
+               <td>{this.state.order.products[key].price}</td>
                <td>
                  <input
                    type="number"
                    value={
                      this.state.order.quantities.hasOwnProperty(
-                      this.state.order.productsInOrder[key].reference
+                      this.state.order.products[key].reference
                      )
-                       ? this.state.order.quantities[this.state.order.productsInOrder[key].reference]
-                       : (this.state.order.quantities[
-                        this.state.order.productsInOrder[key].reference
-                         ] = 1)
+                       ? this.state.order.quantities[this.state.order.products[key].reference]
+                       : (1)
                    }
                    placeholder="Cantidad"
-                   onChange={this.handleChangeInput.bind(this, this.state.order.productsInOrder[key].reference)}
+                   onChange={this.handleChangeInput.bind(this, this.state.order.products[key].reference)}
                  />
                </td>
                <td>
                  <button
-                   id={"remove-" + this.state.order.productsInOrder[key].reference}
+                   id={"remove-" + this.state.order.products[key].reference}
                    className="btn btn-secondary"
                    onClick={
-                     this.removeClick.bind(this,this.state.order.productsInOrder[key].reference)
+                     this.removeClick.bind(this,this.state.order.products[key].reference)
                     }
                  >
                    Eliminar
@@ -119,20 +118,23 @@ class OrdenPedido extends React.Component {
   }
 
   addClick(product) {
-    let productsInOrder = this.state.order.productsInOrder;
-    productsInOrder[product.reference]=product;
+    let products = this.state.order.products;
+    let quantities = this.state.order.quantities;
+    quantities[product.reference] = 1;
+    products[product.reference]=product;
     let newOrder = this.state.order;
-    newOrder.productsInOrder=productsInOrder;
+    newOrder.products=products;
+    newOrder.quantities=quantities
     this.setState({ order:newOrder});
   }
 
   removeClick(reference) {
-    let productsInOrder= this.state.order.productsInOrder;
+    let products= this.state.order.products;
     let quantities = this.state.order.quantities;
-    delete productsInOrder[reference];
+    delete products[reference];
     delete quantities[reference];
     let newOrder=this.state.order;
-    newOrder.productsInOrder=productsInOrder;
+    newOrder.products=products;
     newOrder.quantities=quantities;
     this.setState({ order:newOrder });
   }
