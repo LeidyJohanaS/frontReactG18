@@ -1,7 +1,6 @@
 import "../../styles/Style.css";
 import React from "react";
 import UserService from "../../services/UserService";
-import $ from 'jquery';
 import Functions from '../shared/Functions'
 class Index extends React.Component {
   state = {
@@ -28,6 +27,7 @@ class Index extends React.Component {
                         break;
                     case "ADM":
                         window.location.href="/Main"
+                        break;
                     default:
                         alert("Usuario sin rol especificado. Comuníquese con su administrador")
                 }

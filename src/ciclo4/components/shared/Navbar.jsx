@@ -1,6 +1,6 @@
 import logo from '../../styles/img/logo1.jpeg';
 import logo1 from '../../styles/img/logo.jpeg';
-import Perfil from './Perfil';
+//import Perfil from './Perfil';
 import { Link } from 'react-router-dom';
 const Navbar = () => (
     <>
