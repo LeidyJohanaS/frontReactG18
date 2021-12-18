@@ -3,15 +3,6 @@ import { Form } from "react-bootstrap";
 //import $ from 'jquery'
 import OrderService from "../../services/OrderService";
 
-function filtrarPorEstado(e) {
-  console.log("Por estado", e);
-}
-
-function aplicarFiltroEstado() {
-  let estado = document.getElementById("status");
-  let valor = estado.value;
-  console.log(valor);
-}
 class OrderSelectFilter extends React.Component {
   state={
     user: JSON.parse(sessionStorage.getItem("user"))
