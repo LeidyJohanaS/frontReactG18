@@ -6,7 +6,7 @@
    body {
     margin: 0;
     padding: 0;
-    background: url(/productos.jpeg) 
+    /* background: url(img/productos.jpeg)  */
   }
   .container {
     margin-top: 20px;

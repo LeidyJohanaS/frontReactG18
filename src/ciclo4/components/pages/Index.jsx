@@ -29,7 +29,7 @@ class Index extends React.Component {
                         window.location.href="/Main"
                         break;
                     default:
-                        alert("Usuario sin rol especificado. Comuníquese con su administrador")
+                        alert("Usuario sin rol especificado. Comuníquese con su administrador");
                 }
             }else{
                 alert("Usuario o contraseña incorrecta");
