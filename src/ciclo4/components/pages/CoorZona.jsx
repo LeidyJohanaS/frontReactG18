@@ -1,64 +1,83 @@
-const CoorZona = () => {
-	return( 
+import Form from 'react-bootstrap/Form'
+import React, { useState } from "react";
+import {
+  Button,
+  Modal,
+  Col,
+  Row,
+} from "react-bootstrap";
+
+function CoorZona() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
+  
+  return (
     <>
-<div className="container">
-		<div className="row">
-			<div className="col-md-10">
-				<h1>Orden</h1>
-			</div>
-		</div>
-		<div className="row">
-			<table  id="tablaOrdenes" className="table">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-10">
+            <h1>Orden</h1>
+          </div>
+        </div>
+        <table className="table table-bordered border-dark scroll-area">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Fecha del pedido</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+          <Button variant="primary" onClick={handleShow}>
+                Detalle Orden
+              </Button>
+        </thead>
+      
+               
+      </table>
+        </div>
+      
 
-			</table>
-		</div>
-
-	</div>
-
-
-	<div className="modal fade " id="modalOrden" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div className="modal-dialog modal-fullscreen">
-			<div className="modal-content">
-				<div className="modal-header">
-					<h5 className="modal-title" id="exampleModalLabel">Detalle Orden</h5>
-					<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div className="modal-body">
-
-                    <table id="tablaProductos" className="table table-dark">
-					    
-                    </table>
-                    
-                    <h5 className="title" >Orden Pedido</h5>
-                        <table id="tablapedido" className="table table-dark">
-							
-						</table>
-                        <div className="col-md-6">
-							<label for="" className="p3">Estado:</label>
-							<br/>
-							<div className="form-check form-check-inline">
-								<input className="form-check-input" type="radio" name="radioEstado" id="radioOrdenaprobada" checked/>
-								<label className="form-check-label" for="#radioOrdenaprobada">
-									Aprobado
-								</label>
-							</div>
-							<div className="form-check form-check-inline">
-								<input className="form-check-input" type="radio" name="radioEstado" id="radioOidenrechazada"/>
-								<label className="form-check-label" for="radioOidenrechazada">
-									Rechazado
-								</label>
-							</div>
-
-						</div>
-				</div>
-				<div className="modal-footer">
-					<button className="btn btn-primary" id="actualizarOrden">Actualizar</button>
-					<button className="btn btn-primary" id="cerrarModal" data-bs-dismiss="modal" >Cerrar</button>
-				</div>
-			</div>
-		</div>
-	</div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Detalle Pedido</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>Orden Pedido</h4>
+          <fieldset>
+            <Form.Group as={Row} className="mb-3">
+              <Form.Label as="legend" column sm={2}>
+                Estado:
+              </Form.Label>
+              <Col sm={10}>
+                <Form.Check
+                  type="radio"
+                  label="Aprobado"
+                  name="formHorizontalOrden"
+                  id="radioOrdenaprobada"
+                />
+                <Form.Check
+                  type="radio"
+                  label="Rechazado"
+                  name="formHorizontalOrden"
+                  id="radioOrdenrechazada"
+                />
+              </Col>
+            </Form.Group>
+          </fieldset>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cerrar
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Actualizar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
-	);
-	}
-    export default CoorZona
+  );
+}
+export default CoorZona;
+
