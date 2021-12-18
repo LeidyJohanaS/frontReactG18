@@ -89,8 +89,5 @@ class OrderSelectFilter extends React.Component {
   }
 }
 
-
-  //let value= $("#status")
-
 export default OrderSelectFilter;
 
