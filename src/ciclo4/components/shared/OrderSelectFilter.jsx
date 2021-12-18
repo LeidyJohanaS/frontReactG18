@@ -52,6 +52,17 @@ class OrderSelectFilter extends React.Component {
     switch (this.props.filter) {
       case "none":
       case "":
+        const getOrders = () => {
+          OrderService.findBySalesman(this.state.user.id)
+          .then((response) => {      
+              console.log("Respuesta", response);
+              this.props.setOrders(response.data);
+            })
+            .catch((err) => {
+              console.log("Error", err);
+            });
+        };
+        getOrders();
         return <></>;
       case "date":
         return (
