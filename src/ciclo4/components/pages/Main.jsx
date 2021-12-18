@@ -1,5 +1,8 @@
 //import Navbar from './ciclo4/components/shared/Navbar';
 //import Perfil from '../shared/Perfil';
+import FondoUsuarios from '../../styles/img/usuarios.jpeg'
+import FondoProductos from '../../styles/img/productos.jpeg'
+import { Link } from "react-router-dom";
 const Main = () => (
     <section className="row p-4">
       <div className="row mt-5">
@@ -7,28 +10,28 @@ const Main = () => (
           <div className="row center">
             <div className="col-md-6 card-deck">
 
-              <a href="UsuariosADM.html">
+              <Link to="/UsuariosADM">
                 <div className="card p2 text-center bg-secondary mb-3">
-                  <img className="card-img-top" src="usuarios.jpeg" alt="Card cap"/>
+                  <img className="card-img-top" src={FondoUsuarios} alt="Card cap"/>
                   <div className="card-body">
-                    <a href="UsuariosADM.html" className="btn btn-dark">Usuarios</a>
+                    <Link to="/UsuariosADM" className="btn btn-dark">Usuarios</Link>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
             <div className="col-md-6 ">
-              <a href="productosADM.html">
+              <Link to="/ProductosADM">
                 <div className="card p2 text-center bg-secondary mb-3">
-                  <img className="card-img-top" src="productos.jpeg" alt="Card cap"/>
+                  <img className="card-img-top" src={FondoProductos} alt="Card cap"/>
                   <div className="card-body">
-                    <a href="productosADM.html" className="btn btn-dark">Productos</a>
+                    <Link to="/ProductosADM" className="btn btn-dark">Productos</Link>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </div>
     </section>
 )
-export default Main
+export default Main;
