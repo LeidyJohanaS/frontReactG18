@@ -27,11 +27,36 @@ function getJustDate(fullDate) {
   return  yyyy+"-" +mm + "-"+ dd;
 }
 
+function getMonthByDate(date){
+  return getJustDate(date).split("-")[1]
+}
+function validarCamposUsuario(obj,type){
+  if(obj.identification===""||
+  obj.name===""||
+  obj.birthDay===""||
+  obj.address===""||
+  obj.cellPhone===""||
+  obj.email===""||
+  obj.password===""||
+  obj.zone===""||
+  obj.type===""){
+    return false;
+  }
+  if(type!=="create"){
+    if(!obj.id){
+      return false
+    }
+  }
+  return true;
+}
+
 const exportObj = {
   validarFormatoCorreo,
   validaesVacio,
   isNumeric,
   getJustDate,
+  validarCamposUsuario,
+  getMonthByDate
 };
 
 export default exportObj;
