@@ -27,6 +27,7 @@ class Index extends React.Component {
                         break;
                     case "ADM":
                         window.location.href="/Main"
+                        break;
                     default:
                         alert("Usuario sin rol especificado. Comuníquese con su administrador")
                 }
