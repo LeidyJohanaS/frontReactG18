@@ -45,7 +45,7 @@ class ProductosADM extends React.Component {
   render() {
     return (
       <>
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
             <div className="col-md-10">
               <h1>Productos</h1>
