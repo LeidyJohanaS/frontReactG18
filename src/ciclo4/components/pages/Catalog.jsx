@@ -22,6 +22,7 @@ function Catalog() {
             <ProductSelectFilter
               status={status}
               setProducts={setProducts}
+              products={products}
             ></ProductSelectFilter>
           </div>
         </div>

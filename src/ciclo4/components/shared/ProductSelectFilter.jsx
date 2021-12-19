@@ -30,13 +30,16 @@ function aplicarFiltroPrecio(e,setProducts){
     }
     getProductsByPrice();
 }
-function ProductSelectFilter({status,setProducts}){
+function ProductSelectFilter({status,setProducts,products}){
     switch(status){
         case "none":
         case "":
             function getAllProducts(){
                 ProductService.getAll().then((response)=>{
-                    setProducts(response.data);
+                    if(products.length!==response.data.length){
+                        setProducts(response.data);
+                    }
+                    
                 }).catch((err)=>{
                     console.log(err);
                 })
