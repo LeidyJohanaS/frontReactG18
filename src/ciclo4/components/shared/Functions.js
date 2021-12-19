@@ -50,13 +50,27 @@ function validarCamposUsuario(obj,type){
   return true;
 }
 
+function cargarFechaDeHoy() {
+  let date = new Date();
+
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+
+  if (month < 10) month = "0" + month;
+  if (day < 10) day = "0" + day;
+
+  let today = year + "-" + month + "-" + day;
+  return today;
+}
 const exportObj = {
   validarFormatoCorreo,
   validaesVacio,
   isNumeric,
   getJustDate,
   validarCamposUsuario,
-  getMonthByDate
+  getMonthByDate,
+  cargarFechaDeHoy
 };
 
 export default exportObj;

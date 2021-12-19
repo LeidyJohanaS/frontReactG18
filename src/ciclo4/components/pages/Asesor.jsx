@@ -36,6 +36,7 @@ const Asesor = function () {
           <OrderSelectFilter
             filter={status}
             setOrders={setOrders}
+            orders={orders}
           ></OrderSelectFilter>
         </div>
       </div>

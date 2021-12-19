@@ -158,6 +158,9 @@ class ModalUsuario extends React.Component {
     newUser[type] = newValue;
     if (type === "birthtDay") {
       newUser["monthBirthtDay"] = Functions.getMonthByDate(newValue);
+      let date = new Date(newValue)
+      date.setHours(date.getHours()+5);
+      newUser[type]=date.toISOString();
     } else if (type === "email") {
       UserService.validateEmail(newValue)
         .then((response) => {

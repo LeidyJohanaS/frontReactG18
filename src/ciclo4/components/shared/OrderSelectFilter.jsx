@@ -11,7 +11,6 @@ class OrderSelectFilter extends React.Component {
     const getOrdersByDate = () => {
       OrderService.findBySalesmanAndDate(this.state.user.id,e.target.value)
       .then((response) => {      
-          console.log("Respuesta", response);
           this.props.setOrders(response.data);
         })
         .catch((err) => {
@@ -24,7 +23,7 @@ class OrderSelectFilter extends React.Component {
     const getOrdersByState = () => {
       OrderService.findBySalesmanAndState(this.state.user.id,e.target.value)
       .then((response) => {      
-          console.log("Respuesta", response);
+          
           this.props.setOrders(response.data);
         })
         .catch((err) => {
@@ -46,24 +45,22 @@ class OrderSelectFilter extends React.Component {
       };
       getOrders();
   }
-  
-  render() {
-    console.log("filter", this.props.filter);
-    switch (this.props.filter) {
-      case "none":
-      case "":
+  componentDidUpdate(){
+    if(this.props.filter==="none"||this.props.filter==="") {
         const getOrders = () => {
           OrderService.findBySalesman(this.state.user.id)
           .then((response) => {      
-              console.log("Respuesta", response);
-              this.props.setOrders(response.data);
+              if(response.data.length!==this.props.orders.length)
+                this.props.setOrders(response.data);
             })
             .catch((err) => {
               console.log("Error", err);
             });
         };
-        getOrders();
-        return <></>;
+        getOrders();     
+  }}
+  render() {
+    switch (this.props.filter) {
       case "date":
         return (
           <>
