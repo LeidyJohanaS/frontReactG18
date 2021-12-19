@@ -45,14 +45,14 @@ function OffCanvasExample({ name, ...props }) {
             <img src={logo1} alt="Trulli" width="200" height="55" />
             <div class="card" style={{width: "18rem"}}>
               <div className="card-body">
-                <h5 className="card-title">{user.name}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{user.type === "ASE"
+                <h5 className="card-title">{user?user.name:""}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{user?(user.type === "ASE"
                 ? "Asesor"
                 : user.type === "COORD"
                 ? "Coordinador"
                 : user.type === "ADM"
                 ? "Administrador"
-                : ""}</h6>
+                : ""):""}</h6>
                 
                 
               </div>
