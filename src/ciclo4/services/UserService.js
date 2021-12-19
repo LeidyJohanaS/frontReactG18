@@ -25,6 +25,10 @@ const validateEmail =(email)=>{
 const login = (email,password)=>{
     return http.get(`/user/${email}/${password}`)
 }
+
+const getByBirthMonth=(month)=>{
+  return http.get(`/user/birthday/${month}`)
+}
 const exportedObject = {
   getAll,
   get,
@@ -32,6 +36,7 @@ const exportedObject = {
   update,
   remove,
   validateEmail,
-  login
+  login,
+  getByBirthMonth
 };
 export default exportedObject;

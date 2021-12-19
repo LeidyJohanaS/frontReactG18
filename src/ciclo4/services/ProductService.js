@@ -34,6 +34,14 @@ const findByName = (name) => {
 const getAllCategories = ()=>{
   return http.get(`/chocolate/categorias`);
 }
+
+const getByLessOrEqualPrice=(price)=>{
+  return http.get(`/chocolate/price/${price}`);
+}
+
+const getByWord=(word)=>{
+  return http.get(`chocolate/description/${word}`);
+}
 const exportedObject = {
   getAll,
   get,
@@ -43,7 +51,9 @@ const exportedObject = {
   findByPrice,
   findByCategory,
   findByName,
-  getAllCategories
+  getAllCategories,
+  getByLessOrEqualPrice,
+  getByWord
 }
 export default exportedObject;
 
